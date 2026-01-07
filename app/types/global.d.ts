@@ -15,8 +15,11 @@ interface SpeechRecognition extends EventTarget {
   onend: () => void;
 }
 
-interface SpeechRecognitionEvent {
+interface SpeechRecognitionEvent extends Event {
   results: SpeechRecognitionResultList;
+  resultIndex: number;
+  emma?: any;
+  interpretation?: any;
 }
 
 interface SpeechRecognitionResultList {

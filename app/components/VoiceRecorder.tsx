@@ -32,12 +32,15 @@ export default function VoiceRecorder({
     recognition.continuous = true;
     recognition.interimResults = true;
 
-    recognition.onresult = (event) => {
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       // 最終的な結果を取得
       let finalTranscript = "";
       let interimTranscript = "";
 
-      for (let i = event.resultIndex; i < event.results.length; i++) {
+      // resultIndexが存在しない場合は0から開始
+      const startIndex = (event as any).resultIndex ?? 0;
+
+      for (let i = startIndex; i < event.results.length; i++) {
         const transcript = event.results[i][0].transcript;
         if (event.results[i].isFinal) {
           finalTranscript += transcript;
