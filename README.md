@@ -64,12 +64,58 @@ npm run dev
 - ファイル形式: JSON（各キャラクターごとに `{characterId}.json` として保存）
 - 自動作成: 初回保存時にフォルダが自動作成されます
 
+## Git連携
+
+このプロジェクトは既にGitリポジトリとして初期化されています。
+
+### リモートリポジトリの設定
+
+GitHubなどのリモートリポジトリと連携する場合：
+
+```bash
+# リモートリポジトリを追加（GitHubの例）
+git remote add origin https://github.com/your-username/nomi-app.git
+
+# またはSSHを使用する場合
+git remote add origin git@github.com:your-username/nomi-app.git
+
+# リモートリポジトリの確認
+git remote -v
+```
+
+### 変更のコミットとプッシュ
+
+```bash
+# 変更をステージング
+git add .
+
+# コミット
+git commit -m "コミットメッセージ"
+
+# リモートにプッシュ
+git push -u origin main
+```
+
+### ブランチの管理
+
+```bash
+# 新しいブランチを作成
+git checkout -b feature/your-feature-name
+
+# ブランチを切り替え
+git checkout main
+
+# ブランチをマージ
+git merge feature/your-feature-name
+```
+
 ## 注意事項
 
 - 音声認識機能はChrome、Edge、Safariなどのモダンブラウザで動作します
 - マイクの使用許可が必要です
 - OpenAI APIキーが必要です（有料）
 - 会話履歴は `data/conversations/` フォルダに保存されます（このフォルダは `.gitignore` に含まれています）
+- `.env.local` ファイルはGitにコミットされません（`.gitignore` に含まれています）
 
 ## ライセンス
 
