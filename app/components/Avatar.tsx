@@ -400,6 +400,104 @@ export default function Avatar({ characterId, isSpeaking = false, size = "md" }:
           </svg>
         );
 
+      case "ojisan":
+        return (
+          <svg
+            width={sizeValue}
+            height={sizeValue}
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={isSpeaking ? "avatar-speaking" : ""}
+          >
+            <defs>
+              <radialGradient id="ojisanGlow" cx="50%" cy="50%">
+                <stop offset="0%" stopColor="#D2B48C" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#D2B48C" stopOpacity="0" />
+              </radialGradient>
+              <linearGradient id="ojisanHair" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#8B7355" />
+                <stop offset="100%" stopColor="#654321" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="48" fill="url(#ojisanGlow)" />
+            
+            {/* 顔の輪郭（丸く、少し年配の感じ） */}
+            <circle cx="50" cy="50" r="42" fill="#D2B48C" />
+            <circle cx="50" cy="48" r="40" fill="#CD853F" />
+            
+            {/* 髪（短め、おじさんらしい） */}
+            <path
+              d="M18 28 Q18 10, 35 8 Q50 4, 65 8 Q82 10, 82 28 Q82 32, 78 38 Q74 42, 68 45 Q62 47, 50 48 Q38 47, 32 45 Q26 42, 22 38 Q18 32, 18 28"
+              fill="url(#ojisanHair)"
+            />
+            <path
+              d="M22 32 Q30 28, 40 30 Q50 28, 60 30 Q70 28, 78 32"
+              fill="#654321"
+            />
+            {/* 前髪（少し薄め） */}
+            <path
+              d="M 30 25 Q 35 22, 40 25 Q 45 22, 50 25 Q 55 22, 60 25 Q 65 22, 70 25"
+              fill="#8B7355"
+              opacity="0.7"
+            />
+            
+            {/* 左目（優しい目） */}
+            <ellipse cx="38" cy="48" rx="8" ry="10" fill="#FFFFFF" />
+            <ellipse cx="38" cy="48" rx="7" ry="9" fill="#000000" />
+            <ellipse cx="40" cy="46" rx="4" ry="5" fill="#4169E1" />
+            <ellipse cx="41" cy="45" rx="2" ry="2.5" fill="#000000" />
+            <ellipse cx="42" cy="44" rx="1" ry="1.5" fill="#FFFFFF" />
+            <ellipse cx="35" cy="46" rx="2" ry="2.5" fill="#FFFFFF" opacity="0.9" />
+            {/* 目じりのシワ */}
+            <path d="M 46 48 Q 48 50, 50 48" stroke="#CD853F" strokeWidth="1" fill="none" opacity="0.6" />
+            
+            {/* 右目 */}
+            <ellipse cx="62" cy="48" rx="8" ry="10" fill="#FFFFFF" />
+            <ellipse cx="62" cy="48" rx="7" ry="9" fill="#000000" />
+            <ellipse cx="64" cy="46" rx="4" ry="5" fill="#4169E1" />
+            <ellipse cx="65" cy="45" rx="2" ry="2.5" fill="#000000" />
+            <ellipse cx="66" cy="44" rx="1" ry="1.5" fill="#FFFFFF" />
+            <ellipse cx="59" cy="46" rx="2" ry="2.5" fill="#FFFFFF" opacity="0.9" />
+            {/* 目じりのシワ */}
+            <path d="M 54 48 Q 52 50, 50 48" stroke="#CD853F" strokeWidth="1" fill="none" opacity="0.6" />
+            
+            {/* 眉毛（太め、優しい） */}
+            <path d="M 30 38 Q 38 35, 46 38" stroke="#654321" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+            <path d="M 54 38 Q 62 35, 70 38" stroke="#654321" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+            
+            {/* 鼻（少し大きめ） */}
+            <ellipse cx="50" cy="58" rx="2.5" ry="3" fill="#CD853F" opacity="0.7" />
+            
+            {/* 口ひげ */}
+            <path
+              d="M 42 68 Q 50 72, 58 68"
+              stroke="#654321"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+            />
+            <ellipse cx="50" cy="69" rx="8" ry="3" fill="#654321" opacity="0.8" />
+            
+            {/* 口（笑顔） */}
+            <path
+              d="M 40 72 Q 50 76, 60 72"
+              stroke="#000"
+              strokeWidth="2"
+              fill="none"
+              strokeLinecap="round"
+            />
+            <ellipse cx="50" cy="73" rx="10" ry="4" fill="#8B0000" opacity="0.3" />
+            
+            {/* 頬の赤み（お酒を飲んだ感じ） */}
+            <ellipse cx="28" cy="62" rx="6" ry="5" fill="#FFB6C1" opacity="0.6" />
+            <ellipse cx="72" cy="62" rx="6" ry="5" fill="#FFB6C1" opacity="0.6" />
+            
+            {/* あごひげ（オプション） */}
+            <ellipse cx="50" cy="78" rx="12" ry="6" fill="#654321" opacity="0.7" />
+          </svg>
+        );
+
       default:
         return null;
     }

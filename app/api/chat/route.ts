@@ -19,10 +19,14 @@ export async function POST(request: NextRequest) {
     }
 
     // 会話履歴を構築
+    const systemMessage = characterId === "ojisan"
+      ? `${character.personality}\n\nあなたは${character.name}として、おじさん構文（「〜だな」「〜だぞ」「〜じゃないか」「〜なんだよ」「〜だぜ」「そうそう、わかるわかる」など）を必ず使って会話してください。親しみやすく、時々経験談を交えながら話してください。過去の会話の内容も覚えていて、それに基づいて会話を続けてください。`
+      : `${character.personality}\n\nあなたは${character.name}として、自然で親しみやすい会話をしてください。過去の会話の内容も覚えていて、それに基づいて会話を続けてください。`;
+
     const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
       {
         role: "system",
-        content: `${character.personality}\n\nあなたは${character.name}として、自然で親しみやすい会話をしてください。過去の会話の内容も覚えていて、それに基づいて会話を続けてください。`,
+        content: systemMessage,
       },
       ...conversationHistory.map((msg: { role: string; content: string }) => ({
         role: msg.role as "user" | "assistant",
